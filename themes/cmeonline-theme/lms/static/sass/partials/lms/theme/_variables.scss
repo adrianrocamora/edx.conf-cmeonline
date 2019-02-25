@@ -1,0 +1,20 @@
+// Sample theme to demonstrate SASS overrides
+
+// Theme colors
+//
+// Note: define colors needed by your theme first
+
+// Define the primary color
+$dark_blue: #4c547d;
+$dark_gray: #4b4b4b;
+
+// Set the primary color
+$primary: 		$dark_blue;
+$secondary: 	$dark_gray;
+
+
+// Theme fonts
+//$font-family-sans-serif: cursive;
+
+// Initialize the Open edX Bootstrap theme
+@import 'edx-bootstrap/sass/open-edx/theme';
