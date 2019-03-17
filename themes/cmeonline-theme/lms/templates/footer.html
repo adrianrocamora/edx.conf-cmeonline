@@ -18,32 +18,28 @@ from openedx.core.djangoapps.lang_pref.api import footer_language_selector_is_en
       <nav class="nav-colophon" aria-label="${_('About')}">
       <ol>
           <li class="nav-colophon-01">
-          <a id="about" href="${marketing_link('ABOUT')}">
+          <a id="about" href="https://www.cmeonline.com/about">
               ${_("About")}
           </a>
           </li>
-          %if marketing_link('JOBS') and marketing_link('JOBS') != '#':
-            <li class="nav-colophon-02">
-              <a id="jobs" href="${marketing_link('JOBS')}">
-                ${_("Jobs")}
-              </a>
-            </li>
-          %endif
-          %if marketing_link('NEWS') and marketing_link('NEWS') != '#':
-            <li class="nav-colophon-03">
-              <a id="news" href="${marketing_link('NEWS')}">
-                ${_("News")}
-              </a>
-            </li>
-          %endif
           <li class="nav-colophon-04">
-          <a id="faq" href="${marketing_link('FAQ')}">
-              ${_("FAQ")}
+          <a id="terms" href="https://www.cmeonline.com/terms">
+              ${_("Terms of Service")}
+          </a>
+          </li>
+          <li class="nav-colophon-04">
+          <a id="privacy" href="https://www.cmeonline.com/privacy">
+              ${_("Privacy")}
           </a>
           </li>
           <li class="nav-colophon-05">
-          <a id="contact" href="${marketing_link('CONTACT')}">
+          <a id="contact" href="https://www.cmeonline.com/contact">
               ${_("Contact")}
+          </a>
+          </li>
+          <li class="nav-colophon-05">
+          <a id="blog" href="https://www.cmeonline.com/blog">
+              ${_("Blog")}
           </a>
           </li>
       </ol>
