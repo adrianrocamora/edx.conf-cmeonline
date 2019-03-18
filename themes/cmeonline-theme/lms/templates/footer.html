@@ -71,11 +71,15 @@
       <div class="colophon">
         <nav class="nav-colophon" aria-label="${_('About')}">
           <ol>
-              % for item_num, link in enumerate(footer['navigation_links'], start=1):
-              <li class="nav-colophon-0${item_num}">
-                <a id="${link['name']}" href="${link['url']}">${link['title']}</a>
-              </li>
-              % endfor
+			  <li class="nav-colophon-01">
+				  <a id="about" href="https://www.cmeonline.com/about">About</a>
+			  </li>
+			  <li class="nav-colophon-02">
+				  <a id="blog" href="https://www.cmeonline.com/blog">Blog</a>
+			  </li>
+			  <li class="nav-colophon-03">
+				  <a id="contact" href="https://www.cmeonline.com/contact">Contact</a>
+			  </li>
           </ol>
         </nav>
 
@@ -88,12 +92,12 @@
 
         <nav class="nav-legal" aria-label="${_('Legal')}">
           <ul>
-            % for item_num, link in enumerate(footer['legal_links'], start=1):
-              <li class="nav-legal-0${item_num}">
-                <a href="${link['url']}">${link['title']}</a>
-              </li>
-            % endfor
-            <li><a href="${footer['edx_org_link']['url']}">${footer['edx_org_link']['text']}</a></li>
+			<li class="nav-legal-01">
+				<a href="https://www.cmeonline.com/privacy">Privacy Policy</a>
+			</li>
+			<li class="nav-legal-02">
+				<a href="https://www.cmeonline.com/tos">Terms of Service</a>
+			</li>
           </ul>
         </nav>
       </div>
