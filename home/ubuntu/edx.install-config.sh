@@ -31,14 +31,13 @@ echo 3. Ansible customizations
 sudo cp /home/ubuntu/edx.conf-cmeonline/edx/app/edx_ansible/*.* /edx/app/edx_ansible/
 
 echo 4. install custom theme
-sudo -H -u edxapp bash << EOF
-source /edx/app/edxapp/edxapp_env
-rm -rf /edx/app/edxapp/edx-platform/themes/cmeonline-theme
-cp -R /home/ubuntu/edx.conf-cmeonline/themes/cmeonline-theme /edx/app/edxapp/edx-platform/themes/cmeonline-theme
-EOF
+sudo rm -r /edx/app/edxapp/edx-platform/themes/cmeonline-theme
+sudo cp -R /home/ubuntu/edx.conf-cmeonline/themes/cmeonline-theme /edx/app/edxapp/edx-platform/themes/
+sudo chown -R edxapp /edx/app/edxapp/edx-platform/themes/
+sudo chgrp -R edxapp /edx/app/edxapp/edx-platform/themes/
 
 echo 5. django configuration files
 sudo cp -R /home/ubuntu/edx.conf-cmeonline/edx/app/edxapp/edx-platform/lms/envs/*.* /edx/app/edxapp/edx-platform/lms/envs/
 
-echo 6. admin scripts
-sudo cp -R /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
+#echo 6. admin scripts
+#sudo cp -R /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
