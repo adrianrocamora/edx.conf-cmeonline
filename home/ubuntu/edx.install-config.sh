@@ -11,6 +11,7 @@
 #             3. ansible customizations
 #             4. admin scripts
 #             5. django LMS/CMS configuration overrides
+#             6. install custom theme.
 #---------------------------------------------------------
 
 rm -rf /home/ubuntu/edx.conf-cmeonline
@@ -36,3 +37,11 @@ sudo cp -R /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
 
 # 5. django configuration files
 sudo cp -R /home/ubuntu/edx.conf-cmeonline/edx/app/edxapp/edx-platform/lms/envs/*.* /edx/app/edxapp/edx-platform/lms/envs/
+
+# 6. install custom theme
+sudo -H -u edxapp bash << EOF
+source /edx/app/edxapp/edxapp_env
+rm -rf /edx/app/edxapp/edx-platform/themes/cmeonline-theme
+mkdir /edx/app/edxapp/edx-platform/themes/cmeonline-theme
+cp -r /home/ubuntu/edx.conf-cmeonline/themes/cmeonline-theme/* /edx/app/edxapp/edx-platform/themes/cmeonline-theme
+EOF
