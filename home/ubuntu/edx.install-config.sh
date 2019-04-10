@@ -31,4 +31,4 @@ sudo service nginx restart
 sudo cp /home/ubuntu/edx.conf-cmeonline/edx/app/edx_ansible/*.* /edx/app/edx_ansible/
 
 # 4. admin scripts
-sudo cp /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
+sudo cp -R /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
