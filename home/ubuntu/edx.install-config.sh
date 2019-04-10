@@ -10,6 +10,7 @@
 #             2. nginx custom configurations
 #             3. ansible customizations
 #             4. admin scripts
+#             5. django LMS/CMS configuration overrides
 #---------------------------------------------------------
 
 rm -rf /home/ubuntu/edx.conf-cmeonline
@@ -32,3 +33,6 @@ sudo cp /home/ubuntu/edx.conf-cmeonline/edx/app/edx_ansible/*.* /edx/app/edx_ans
 
 # 4. admin scripts
 sudo cp -R /home/ubuntu/edx.conf-cmeonline/home/ubuntu/* /home/ubuntu/
+
+# 5. django configuration files
+sudo cp -R /home/ubuntu/edx.conf-cmeonline/edx/app/edxapp/edx-platform/lms/envs/*.* /edx/app/edxapp/edx-platform/lms/envs/
