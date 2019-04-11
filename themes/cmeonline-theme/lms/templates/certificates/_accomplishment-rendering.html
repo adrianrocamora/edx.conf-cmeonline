@@ -3,7 +3,6 @@
 <%namespace name='static' file='../static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
-accomplishment_credit_string = test_credit_string
 %>
 
 <main class="accomplishment accomplishment-main">
@@ -32,7 +31,6 @@ accomplishment_credit_string = test_credit_string
                         <span class="accomplishment-course hd-1 emphasized">
                             <span class="accomplishment-course-org">${accomplishment_copy_course_org}  </span>
                             <span class="accomplishment-course-number">${course_number}</span>:
-                            <span class="accomplishment-course-number">${accomplishment_credit_string}</span>:
                             <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
                         </span>
                     </p>
