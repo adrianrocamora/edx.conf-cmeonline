@@ -1,0 +1,9 @@
+<%page expression_filter="h"/>
+
+<%!
+from django.utils.translation import ugettext as _
+from openedx.core.djangolib.markup import HTML, Text
+%>
+
+<h1>${Text(_(u"Welcome to CMEOnline!"))}</h1>
+## <p>${_("It works! This is the default homepage for this Open edX instance.")}</p>
