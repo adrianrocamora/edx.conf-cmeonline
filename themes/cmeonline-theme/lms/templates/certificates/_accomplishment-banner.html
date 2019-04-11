@@ -7,8 +7,7 @@ from openedx.core.djangolib.markup import HTML, Text
 accomplishment_course_title = accomplishment_copy_course_name
 if certificate_data and certificate_data.get('course_title', ''):
     accomplishment_course_title = certificate_data.get('course_title', '')
-## course_mode_class = course_mode if course_mode else ''
-course_mode = 'verified'
+course_mode_class = course_mode if course_mode else ''
 %>
 <div id="fb-root"></div>
 <div class="wrapper-banner wrapper-banner-user">
