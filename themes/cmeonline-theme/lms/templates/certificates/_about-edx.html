@@ -1,14 +1,20 @@
 <%page expression_filter="h"/>
-<%! 
-from django.utils.translation import ugettext as _ 
+<%!
+from django.utils.translation import ugettext as _
 from openedx.core.djangolib.markup import HTML, Text
+
+company_about_url = 'https://www.cmeonline.com/about'
+company_about_urltext = 'CMEOnline About'
+company_about_title = 'About CMEOnline'
+company_about_description = 'CMEOnline offers online continuing education and verification services.'
 %>
-<div class="accomplishment-metadata-bit accomplishment-metadata-aboutedx">
-    <h3 class="accomplishment-metadata-title">${_("About CMEOnline")}</h3>
-    <p class="accomplishment-metadata-copy">
-        ${Text(_("{link_start}CMEOnline{link_end} is a team of specialists in the world of Medicine, Law and Technology who have come together with the intention helping to keep you, the practitioner, up to date with the latest in information which is valuable to you and your practice.")).format(
-            link_start=HTML('<a href="https://www.cmeonline.com/about">'),
-            link_end=HTML('</a>'),
-        )}
-    </p>
-</div>
+
+<section class="about-item about-edx">
+    <h2 class="about-edx-title hd-4">${company_about_title}</h2>
+
+    <div class="about-edx-copy copy copy-meta">
+        <p>${company_about_description}</p>
+
+        <a class="action" href="${company_about_url}">${company_about_urltext}</a>
+    </div>
+</section>

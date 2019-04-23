@@ -3,115 +3,116 @@
 <%namespace name='static' file='../static_content.html'/>
 <%
 course_mode_class = course_mode if course_mode else ''
+course_mode_icon_url = 'images/ico-'+ course_mode_class + '.png'
+course_mode_bg_url = 'images/bg-'+ course_mode_class + '.png'
+## organization_short_name = 'CMEOnline'
+platform_name = 'CMEOnline'	## Currently only used for the user@platforname since logos were disabled for now
+document_title = "Continuing Education Verification Report"
+## document_title = "Continuing Education Verification Report | {course_number} Certificate".format(
+## course_number=context['course_number']
+## )
+accomplishment_copy_description_full = 'successfully completed, received a passing grade, and was awarded this CMEOnline Continuing Education Verification Certificate of Completion in '
+accomplishment_copy_course_description = 'a course of study offered by CMEOnline'
+accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Podiatric Medical Education as a sponsor ofcontinuing education in podiatric medicine.This certifies that the above Doctor of Podiatric Medicine has attended andsuccessfully completed the above noted continued education course as indicated byThe 2017 Western Foot and Ankle Conference.'
 %>
+
 
 <main class="accomplishment accomplishment-main">
 
     <div class="wrapper-accomplishment-rendering">
-        <div class="accomplishment-rendering">
+		<div class="accomplishment-rendering" style="
+			background-color: white;
+			background-image: url('');
+			background-size: 65%; 
+		">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
             <span class="deco-corner deco-corner-bl"></span>
             <span class="deco-corner deco-corner-br"></span>
 
             <div class="accomplishment-type">
-                <span class="accomplishment-type-symbol">
-                    <img class="src" src="/static/certificates/images/ico-${course_mode_class}.png" alt="Image for course mode of type ${course_mode_class}">
-                </span>
-
-                <span class="accomplishment-type-label hd-3">${document_title}</span>
+				<span class="accomplishment-type-symbol"> 
+					## <img class="src" src="" alt="Image for course mode of type ${course_mode_class} with icon url ${course_mode_icon_url}">
+					<img class="src" src="" alt="">
+				</span> 
+				<img class="signatory-signature" src="${static.url('images/logo.png')}" alt="CMEOnline Logo">
             </div>
 
-            <div class="wrapper-statement-and-signatories">
-                <div class="accomplishment-statement">
-                    <p class="accomplishment-statement-lead">
-                        <strong class="accomplishment-recipient hd-1 emphasized">${accomplishment_copy_name}</strong>
-                        <span class="accomplishment-summary copy copy-lead">${accomplishment_copy_description_full}</span>
+            <div class="wrapper-statement-and-signatories" style="margin: 0 auto; text-align: center">
+                <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
+					<span class="accomplishment-type-label hd-3" style="font-size: 1.6rem">${document_title}</span>
+				</div>
 
-                        <span class="accomplishment-course hd-1 emphasized">
-                            <span class="accomplishment-course-org">${accomplishment_copy_course_org}  </span>
-                            <span class="accomplishment-course-number">${course_number}</span>:
-                            <span class="accomplishment-course-name">${accomplishment_copy_course_name}</span>
-                        </span>
-                    </p>
+                <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
+					## <dl>
+					## 	<dt>${certificate_date_issued_title}</dt>
+					## 	<dd>${certificate_date_issued}</dd>
+					## </dl>
 
-                    <p class="accomplishment-statement-detail copy copy-lead">${accomplishment_copy_course_description}</p>
+					<p class="accomplishment-course-name" style="font-size: 1.3rem">This certificate is extended to: ${accomplishment_copy_username}</p>
                 </div>
 
-                % if mode != 'base':
-                <div class="accomplishment-signatories">
-                    <h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
+                <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
 
-                    <div class="wrapper-signatories">
-                        <div class="list-signatories">
-                            % if certificate_data:
-                                % for signatory in certificate_data.get('signatories', []):
-                                <div class="signatory">
-                                    <img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}">
-
-                                    <h4 class="signatory-name hd-5">${signatory['name']}</h4>
-                                    <p class="signatory-credentials copy copy-micro">
-                                        <span class="role">${signatory['title']}</span>
-                                        <span class="organization">${signatory['organization']}</span>
-                                    </p>
-                                </div>
-                                % endfor
-                            % endif
-                        </div>
-                    </div>
+					<table border="0" style="border-collapse: separate; display: table;border-spacing: 22px; margin: 0 auto;font-size: 1.2rem">
+						<tr>
+							<th>Date</th>
+							<th>Course</th>
+							% if cmeonline_course_credits is not UNDEFINED:
+							<th>Credits</th>
+							% endif
+						</tr>
+						<tr>
+							<td>${certificate_date_issued}</td>
+							<td>${accomplishment_copy_course_name}</td>
+							% if cmeonline_course_credits is not UNDEFINED:
+							<td>${cmeonline_course_credits}</td>
+							% endif
+						</tr>
+					</table>
                 </div>
-                % endif
-            </div>
 
-            <div class="accomplishment-orgs">
-                <h3 class="accomplishment-orgs-title sr-only">${_("Supported by the following organizations")}</h3>
+				<div class="accomplishment-signatories" style="border-bottom: 0.125rem #f5f5f5; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
+					<h3 class="accomplishment-signatories-title sr-only">${_("Noted by")}</h3>
 
-                <ul class="wrapper-orgs list-orgs">
-                    <li class="wrapper-organization">
-                        <div class="organization organization-edX">
-                            <img class="organization-logo" src="${logo_src}" alt="${platform_name}">
-                        </div>
-                    </li>
+					<div class="wrapper-signatories">
+						<div class="list-signatories">
+							% if certificate_data:
+								% for signatory in certificate_data.get('signatories', []):
+								<div class="signatory">
+									<img class="signatory-signature" src="${static.url(signatory['signature_image_path'])}" alt="${signatory['name']}">
 
-                    % if organization_logo:
-                    <li class="wrapper-organization">
-                        <div class="organization">
-                            <img class="organization-logo" src="${organization_logo.url}" alt="${platform_name}">
-                        </div>
-                    </li>
-                    % endif
-                </ul>
-            </div>
+									<h4 class="signatory-name hd-5">${signatory['name']}</h4>
+									<p class="signatory-credentials copy copy-micro">
+										<span class="role">${signatory['title']}</span>
+										<span class="organization">${signatory['organization']}</span>
+									</p>
+								</div>
+								% endfor
+							% endif
+						</div>
+					</div>
+				</div>
+
+                <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
+					<p style="margin: 0 auto; width: 440px; padding: 10px; border: 2px solid gray; font-size: 1.0rem; text-align: center;">
+					CMEOnline is approved by the Council on Podiatric Medical Education as a sponsor 
+					of continuing education in podiatric medicine.</br></br>
+					This certifies that the above Doctor of Podiatric Medicine has attended 
+					and successfully completed the above noted continued education course as 
+					indicated by CMEOnline
+					</p>
+					</br>
+				</div>
+
+                <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
+					<p style="font-size: 1.2rem; text-align: center;">
+					${certificate_id_number_title} : ${certificate_id_number}
+					</p>
+				</div>
+
+			</div>
         </div>
     </div>
-
-    <div class="wrapper-accomplishment-metadata">
-        <div class="accomplishment-metadata">
-            <h2 class="accomplishment-metadata-title hd-6">${accomplishment_copy_more_about}</h2>
-
-            <div class="wrapper-metadata">
-                <dl class="metadata accomplishment-recipient">
-                    <dt class="label sr-only">${_("Awarded to:")}</dt>
-                    <dd class="value copy copy-meta">
-                        <span class="recipient-img">
-                            <img class="src" src="/static/certificates/images/demo-user-profile.png" alt="Recipient Image">
-                        </span>
-                        <div class="recipient-details">
-                            <h3 class="recipient-name">${accomplishment_copy_name}</h3>
-                            <p class="recipient-username">${accomplishment_copy_username} @ ${platform_name}</p>
-                        </div>
-                    </dd>
-                </dl>
-                <dl class="metadata accomplishment-id">
-                    <dt class="label copy copy-meta">${certificate_id_number_title}:</dt>
-                    <dd class="value copy copy-base">${certificate_id_number}</dd>
-                </dl>
-                <dl class="metadata accomplishment-date">
-                    <dt class="label copy copy-meta">${certificate_date_issued_title}</dt>
-                    <dd class="value copy copy-base">${certificate_date_issued}</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-
 </main>
+
