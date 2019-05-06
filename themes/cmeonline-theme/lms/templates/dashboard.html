@@ -18,6 +18,12 @@ from openedx.core.djangolib.js_utils import dump_js_escaped_json, js_escaped_str
 from openedx.core.djangolib.markup import HTML, Text
 
 from student.models import CourseEnrollment
+
+from openedx.core.djangoapps.user_api.accounts.image_helpers import get_profile_image_urls_for_user
+from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
+from openedx.features.enterprise_support.utils import get_enterprise_learner_generic_name
+
+
 %>
 
 <%
@@ -129,7 +135,7 @@ from student.models import CourseEnrollment
           % endif
 
           % if len(course_entitlements + course_enrollments) > 0:
-			<p>test_003</p>
+			<p>test_004</p>
             <ul class="listing-courses">
             <%
                 share_settings = configuration_helpers.get_value(
