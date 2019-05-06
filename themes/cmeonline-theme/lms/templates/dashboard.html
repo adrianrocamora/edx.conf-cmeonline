@@ -23,8 +23,6 @@ from openedx.core.djangoapps.user_api.accounts.image_helpers import get_profile_
 from openedx.core.djangoapps.user_api.accounts.utils import retrieve_last_sitewide_block_completed
 from openedx.features.enterprise_support.utils import get_enterprise_learner_generic_name
 
-username
-
 %>
 
 <%
@@ -136,7 +134,7 @@ username
           % endif
 
           % if len(course_entitlements + course_enrollments) > 0:
-			<p>test_005</p>
+			<p>test_006 ${username}</p>
             <ul class="listing-courses">
             <%
                 share_settings = configuration_helpers.get_value(
