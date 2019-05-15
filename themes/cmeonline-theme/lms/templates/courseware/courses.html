@@ -67,7 +67,6 @@
 
 		<div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
 		  <ul class="courses-listing">
-			<p>${Association.association_name}</p>
 			%for course in courses:
 			%if is_for_public_course_display_id(course.display_number_with_default):
 			<li class="courses-listing-item">
@@ -88,5 +87,8 @@
 		% endif
 
 	  </section>
+	  <p>Logs:</p>
+	  <p>${Association}</p>
+	  <p>${Association.association_name}</p>
 	</section>
 </main>
