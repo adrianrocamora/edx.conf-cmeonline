@@ -6,7 +6,6 @@ from openedx.core.djangoapps.site_configuration import helpers as configuration_
 %>
 <%
 def is_for_public_course_display_id(course_id):
-	return True
 	if course_id[:3] == 'NYS':
 		return False
 	else:
