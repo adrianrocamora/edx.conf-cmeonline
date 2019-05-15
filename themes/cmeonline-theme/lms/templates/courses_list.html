@@ -1,25 +1,41 @@
 <%page expression_filter="h"/>
 <%namespace name='static' file='static_content.html'/>
 <%! from django.utils.translation import ugettext as _ %>
+<%!
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
+%>
+<%
+def is_for_public_course_display_id(course_id):
+	if course_id[:3] == 'NYS':
+		return False
+	else:
+		return True
+%>
 
 <section class="courses-container">
   <section class="highlighted-courses">
 
     % if settings.FEATURES.get('COURSES_ARE_BROWSABLE'):
       <section class="courses">
-		<p>test007</p>
+		<% 
+	full_course_list = [] 
+	for course in courses: full_course_list.append(course) 
+	## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
+	## NOTE: if HOMEPAGE_COURSE_MAX is set to None it should return all courses
+	visible_course_list = [] 
+	for course in full_course_list[:homepage_course_max]: 
+		if is_for_public_course_display_id(course.display_number_with_default):
+			visible_course_list.append(course) 
+		%> 
         <ul class="courses-listing">
-          ## limiting the course number by using HOMEPAGE_COURSE_MAX as the maximum number of courses
-          ## %for course in courses[:homepage_course_max]:
-          %for course in courses[:2]:
+          % for course in visible_course_list: 
           <li class="courses-listing-item">
               <%include file="course.html" args="course=course" />
           </li>
-        %endfor
+          % endfor
         </ul>
       </section>
     ## in case there are courses that are not shown on the homepage, a 'View all Courses' link should appear
-      % if homepage_course_max and len(courses) > homepage_course_max:
       <div class="courses-more">
         <a class="courses-more-cta" href="${marketing_link('COURSES')}"> ${_("View all Courses")} </a>
       </div>
