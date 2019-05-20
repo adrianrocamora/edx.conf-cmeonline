@@ -23,7 +23,7 @@ accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Po
 		<div class="accomplishment-rendering" style="
 			background-color: white;
 			background-image: url('');
-			background-size: 65%; 
+			background-size: 65%;
 		">
             <span class="deco-corner deco-corner-tl"></span>
             <span class="deco-corner deco-corner-tr"></span>
@@ -31,10 +31,10 @@ accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Po
             <span class="deco-corner deco-corner-br"></span>
 
             <div class="accomplishment-type">
-				<span class="accomplishment-type-symbol"> 
+				<span class="accomplishment-type-symbol">
 					## <img class="src" src="" alt="Image for course mode of type ${course_mode_class} with icon url ${course_mode_icon_url}">
 					<img class="src" src="" alt="">
-				</span> 
+				</span>
 				<img class="signatory-signature" src="${static.url('images/logo.png')}" alt="CMEOnline Logo">
             </div>
 
@@ -49,7 +49,11 @@ accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Po
 					## 	<dd>${certificate_date_issued}</dd>
 					## </dl>
 
-					<p class="accomplishment-course-name" style="font-size: 1.3rem">This certificate is extended to: ${accomplishment_copy_username}</p>
+					##<p class="accomplishment-course-name" style="font-size: 1.3rem">This certificate is extended to: ${accomplishment_copy_username}</p>
+          ##
+          ## McDaniel May-2019: change username (and integer ID) to the user's Full Name.
+          ## also, removing leading text "This certificate is extended to:"
+          <p class="accomplishment-course-name" style="font-size: 1.3rem">${accomplishment_copy_name}</p>
                 </div>
 
                 <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
@@ -96,10 +100,10 @@ accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Po
 
                 <div class="accomplishment-statement" style="border-bottom: 0.125rem #f5f5f5; text-align: center; margin-bottom: 1.5rem; padding-bottom: 1.5rem">
 					<p style="margin: 0 auto; width: 440px; padding: 10px; border: 2px solid gray; font-size: 1.0rem; text-align: center;">
-					CMEOnline is approved by the Council on Podiatric Medical Education as a sponsor 
+					CMEOnline is approved by the Council on Podiatric Medical Education as a sponsor
 					of continuing education in podiatric medicine.</br></br>
-					This certifies that the above Doctor of Podiatric Medicine has attended 
-					and successfully completed the above noted continued education course as 
+					This certifies that the above Doctor of Podiatric Medicine has attended
+					and successfully completed the above noted continued education course as
 					indicated by CMEOnline
 					</p>
 					</br>
@@ -115,4 +119,3 @@ accomplishment_bottom_box_approval = 'CMEOnline is approved by the Council on Po
         </div>
     </div>
 </main>
-
