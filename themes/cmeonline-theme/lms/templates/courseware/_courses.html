@@ -10,17 +10,29 @@
 <%
   course_discovery_enabled = settings.FEATURES.get('ENABLE_COURSE_DISCOVERY')
 
-  def is_for_public_course_display_id(course_id):
-	if course_id[:3] == 'NYS':
-	  return False
-	else:
-	  return True
+  def is_member_course(course_id):
+    """
+    grab profile data of current user. look for the "assocation name" data field.
+    oauth populates a string value like, "NYSPMA" that corresponds with proprietary courses
+    available to these members.
+    """
+    assoc = 'NYSPMA'
+
+    """
+    the left-most 6 characters of the course id identify the "university" for the course.
+    if this string matches the current user's assocation name then we'll want this course
+    card added to the course discovery data grid.
+    """
+  	if course_id[:6] == assoc:
+  	  return False
+  	else:
+  	  return True
 
 %>
 
 <%namespace name='static' file='../static_content.html'/>
 
-% if course_discovery_enabled: 
+% if course_discovery_enabled:
 <%block name="header_extras">
   % for template_name in ["course_card", "filter_bar", "filter", "facet", "facet_option"]:
   <script type="text/template" id="${template_name}-tpl">
@@ -68,7 +80,7 @@
 		<div class="courses${'' if course_discovery_enabled else ' no-course-discovery'}" role="region" aria-label="${_('List of Courses')}">
 		  <ul class="courses-listing">
 			%for course in courses:
-			%if is_for_public_course_display_id(course.display_number_with_default):
+			%if is_member_course(course.display_number_with_default):
 			<li class="courses-listing-item">
 			  <%include file="../course.html" args="course=course" />
 			</li>
@@ -87,8 +99,8 @@
 		% endif
 
 	  </section>
-	  <p>Logs:</p>
-	  <p>${Association}</p>
-	  <p>${Association.association_name}</p>
+	  ##<p>Logs:</p>
+	  ##<p>${Association}</p>
+	  ##<p>${Association.association_name}</p>
 	</section>
 </main>
