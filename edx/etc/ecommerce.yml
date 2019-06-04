@@ -13,7 +13,7 @@ CACHES:
 COMPREHENSIVE_THEME_DIRS:
 - /edx/var/edx-themes/edx-themes/ecommerce
 - /edx/app/ecommerce/ecommerce/ecommerce/themes
-CSRF_COOKIE_SECURE: false
+CSRF_COOKIE_SECURE: true
 DATABASES:
     default:
         ATOMIC_REQUESTS: true
