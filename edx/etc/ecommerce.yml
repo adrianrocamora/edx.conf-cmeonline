@@ -28,7 +28,7 @@ DATABASES:
         PORT: '3306'
         USER: ecomm001
 DEFAULT_SITE_THEME: null
-ECOMMERCE_URL_ROOT: https://courses.cmeonline.com:18130/
+ECOMMERCE_URL_ROOT: https://courses.cmeonline.com:18130
 EDX_API_KEY: PUT_YOUR_API_KEY_HERE
 EDX_DRF_EXTENSIONS:
     OAUTH2_USER_INFO_URL: https://courses.cmeonline.com/oauth2/user_info
